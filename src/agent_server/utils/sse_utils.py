@@ -24,3 +24,26 @@ def extract_event_sequence(event_id: str) -> int:
         return int(event_id.split("_event_")[-1])
     except (ValueError, IndexError):
         return 0
+
+
+def validate_event_id(event_id: str) -> bool:
+    """Validate if event_id follows the expected format.
+
+    Args:
+        event_id: The event ID string to validate
+
+    Returns:
+        True if event_id is valid, False otherwise
+    """
+    if not event_id or not isinstance(event_id, str):
+        return False
+
+    parts = event_id.split("_event_")
+    if len(parts) != 2:
+        return False
+
+    try:
+        int(parts[1])
+        return True
+    except ValueError:
+        return False
