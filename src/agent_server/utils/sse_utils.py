@@ -24,3 +24,21 @@ def extract_event_sequence(event_id: str) -> int:
         return int(event_id.split("_event_")[-1])
     except (ValueError, IndexError):
         return 0
+
+
+def format_event_summary(run_id: str, event_count: int) -> str:
+    """Format a summary of events for a run.
+
+    Args:
+        run_id: The run identifier
+        event_count: Number of events
+
+    Returns:
+        Formatted summary string
+    """
+    if event_count == 0:
+        return f"Run {run_id} has no events"
+    elif event_count == 1:
+        return f"Run {run_id} has 1 event"
+    else:
+        return f"Run {run_id} has {event_count} events"
