@@ -16,8 +16,7 @@ COPY pyproject.toml README.md ./
 RUN pip install --upgrade pip setuptools wheel
 
 # Install Python dependencies
-# Force rebuild: 2025-10-15-v3
-RUN pip install --no-cache-dir --pre .
+RUN pip install --no-cache-dir .
 
 # Production stage
 FROM python:3.11-slim
