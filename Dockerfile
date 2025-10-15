@@ -3,9 +3,6 @@ FROM python:3.11-slim AS builder
 
 WORKDIR /app
 
-# Cache bust - force complete rebuild
-RUN echo "Build timestamp: $(date +%s)" > /tmp/build_marker
-
 # Install system dependencies for building Python packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
