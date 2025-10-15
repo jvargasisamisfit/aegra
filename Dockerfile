@@ -16,6 +16,7 @@ COPY pyproject.toml README.md ./
 RUN pip install --upgrade pip setuptools wheel
 
 # Install Python dependencies
+# Force rebuild: 2025-10-15-v2
 RUN pip install --no-cache-dir .
 
 # Production stage
