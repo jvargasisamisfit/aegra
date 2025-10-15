@@ -15,8 +15,8 @@ COPY pyproject.toml README.md ./
 # Install pip and build tools
 RUN pip install --upgrade pip setuptools wheel
 
-# Install Python dependencies (--pre flag allows pre-release versions like langchain 1.0.0a10)
-RUN pip install --no-cache-dir --pre .
+# Install Python dependencies
+RUN pip install --no-cache-dir .
 
 # Production stage
 FROM python:3.11-slim
