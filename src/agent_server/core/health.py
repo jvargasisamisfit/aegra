@@ -133,3 +133,17 @@ async def readiness_check():
 async def liveness_check():
     """Kubernetes liveness probe endpoint"""
     return {"status": "alive"}
+
+
+@router.get("/debug/packages")
+async def debug_packages():
+    """Debug endpoint to check installed package versions"""
+    import importlib.metadata
+    packages = ["langchain", "langgraph", "deepagents", "langchain-openai"]
+    versions = {}
+    for pkg in packages:
+        try:
+            versions[pkg] = importlib.metadata.version(pkg)
+        except importlib.metadata.PackageNotFoundError:
+            versions[pkg] = "not installed"
+    return versions
